@@ -1,0 +1,42 @@
+{% extends "base-with-menu.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Submit to MOSS" %}{% endblock %}
+
+{% block main-content %}
+<h1>{% trans "Export submissions to MOSS" %}</h1>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    {% trans "Submitting source codes to MOSS makes them public to anyone with the link." %}
+    <span></span>
+</div>
+<p>
+{% blocktrans %} 
+Here you can export submissions from this contest to the MOSS (Measure Of Software Similarity) system
+maintained by the Stanford University.
+This tool automatically finds all pairs of submissions which looks suspiciously similar.
+You have to be a registered user of the MOSS system in order to provide your user id.
+{% endblocktrans %}
+{% trans "You can learn more about the system and the registration processs at the " %}
+<a href="https://theory.stanford.edu/~aiken/moss/">MOSS site</a>
+</p>
+<p><strong>
+{% blocktrans %}
+    OIOIOI does not store or share your user id with anyone.
+    It is only used to make a single query with the source codes on your behalf.
+{% endblocktrans %}
+</strong></p>
+
+<form action="{% url 'moss_export' %}" method="post">
+    {% csrf_token %}
+    {% include "ingredients/form.html" %}
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" role="button">
+            {% trans "Submit" %}
+        </button>
+    </div>
+</form>
+
+<p><strong>{% trans "For contests with many submissions exporting submissions to MOSS may take a while. Please be patient." %}</strong></p>
+
+{% endblock %}
