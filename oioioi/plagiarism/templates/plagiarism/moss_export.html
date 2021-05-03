@@ -1,0 +1,15 @@
+{% extends "base-with-menu.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Submit to MOSS" %}{% endblock %}
+
+{% block main-content %}
+<h1>{% trans "Export submissions to MOSS" %}</h1>
+<div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    {% trans "Submitting source codes to MOSS makes them public to everyone with the link." %}
+    <span></span>
+</div>
+<p> {% trans "Here you can export submissions from this contest to an archive in szubrawcy-compatible format. Please note that this feature is optimized for OI and may not work as well for other contest types." %} <p>
+<p><strong>{% trans "For large contests building the archive may take a while. Please be patient." %}</strong></p>
+{% endblock %}
